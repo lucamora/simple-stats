@@ -17,18 +17,31 @@ public class StringEngine extends Engine {
     }
 
     @Override
-    public void ingest(String raw) {
+    public boolean ingest(String raw) {
         // clean ingested string
         String word = raw.toLowerCase();
 
         for (Stats<String> stats : this.statistics) {
             stats.update(word);
         }
+
+        return true;
     }
 
     @Override
     public String type() {
         return "string";
+    }
+
+    @Override
+    public Result stats(String name) {
+        name = name.trim().toLowerCase();
+        for (Stats<String> stats : this.statistics) {
+            if (stats.name().equals(name)) {
+                return new Result(stats.name(), stats.get());
+            }
+        }
+        return null;
     }
 
     @Override

@@ -10,9 +10,11 @@ import java.util.List;
  * Reference: https://sourcemaking.com/design_patterns/strategy
  */
 public abstract class Engine implements Observer<String> {
-    protected abstract void ingest(String raw);
+    protected abstract boolean ingest(String raw);
 
     public abstract String type();
+
+    public abstract Result stats(String name);
 
     public abstract List<Result> export();
 

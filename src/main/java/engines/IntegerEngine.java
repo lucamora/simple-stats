@@ -19,25 +19,37 @@ public class IntegerEngine extends Engine {
     }
 
     @Override
-    public void ingest(String raw) {
+    public boolean ingest(String raw) {
         // parse ingested string
-        int number = 0;
+        int number;
         try {
             number = Integer.parseInt(raw);
         }
         catch (NumberFormatException e) {
-            System.out.println("> invalid number");
-            return;
+            return false;
         }
 
         for (Stats<Integer> stats : this.statistics) {
             stats.update(number);
         }
+
+        return true;
     }
 
     @Override
     public String type() {
         return "integer";
+    }
+
+    @Override
+    public Result stats(String name) {
+        name = name.trim().toLowerCase();
+        for (Stats<Integer> stats : this.statistics) {
+            if (stats.name().equals(name)) {
+                return new Result(stats.name(), stats.get().toString());
+            }
+        }
+        return null;
     }
 
     @Override

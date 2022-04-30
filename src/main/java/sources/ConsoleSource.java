@@ -16,18 +16,18 @@ public class ConsoleSource extends Source {
     @Override
     public void process() {
         while (!stop) {
-            String data = null;
+            String data;
             try {
                 data = reader.readLine();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
-            if (data.equals("export")) {
-                stop = true;
-            }
-            else if (!data.isEmpty()) {
+            if (!data.isEmpty()) {
                 notifyObservers(data);
+            }
+            else {
+                stop = true;
             }
         }
     }

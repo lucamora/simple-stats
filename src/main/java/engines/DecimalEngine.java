@@ -6,36 +6,52 @@ import stats.decimal.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class DecimalEngine extends Engine {
     protected final List<Stats<Float>> statistics = new ArrayList<>();
 
     public DecimalEngine() {
+        // use dots instead of commas when formatting float
+        Locale.setDefault(Locale.US);
+
         this.statistics.add(new RunningAverage());
         this.statistics.add(new RunningVariance());
         this.statistics.add(new Range());
     }
 
     @Override
-    public void ingest(String raw) {
+    public boolean ingest(String raw) {
         // parse ingested string
-        float number = 0;
+        float number;
         try {
             number = Float.parseFloat(raw);
         }
         catch (NumberFormatException e) {
-            System.out.println("> invalid number");
-            return;
+            return false;
         }
 
         for (Stats<Float> stats : this.statistics) {
             stats.update(number);
         }
+
+        return true;
     }
 
     @Override
     public String type() {
         return "decimal";
+    }
+
+    @Override
+    public Result stats(String name) {
+        name = name.trim().toLowerCase();
+        for (Stats<Float> stats : this.statistics) {
+            if (stats.name().equals(name)) {
+                return new Result(stats.name(), String.format("%.3f", stats.get()));
+            }
+        }
+        return null;
     }
 
     @Override
