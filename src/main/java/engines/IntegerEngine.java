@@ -11,6 +11,7 @@ public class IntegerEngine extends Engine {
     private final List<Stats<Integer>> statistics = new ArrayList<>();
 
     public IntegerEngine() {
+        // register statistics
         this.statistics.add(new MinValue());
         this.statistics.add(new MaxValue());
         this.statistics.add(new Count());
@@ -20,7 +21,7 @@ public class IntegerEngine extends Engine {
 
     @Override
     public boolean ingest(String raw) {
-        // parse ingested string
+        // parse ingested data item
         int number;
         try {
             number = Integer.parseInt(raw);
@@ -29,6 +30,7 @@ public class IntegerEngine extends Engine {
             return false;
         }
 
+        // update statistics
         for (Stats<Integer> stats : this.statistics) {
             stats.update(number);
         }

@@ -2,6 +2,9 @@ package stats.integer;
 
 import stats.Stats;
 
+/**
+ * Sum of all the ingested data points
+ */
 public class Sum implements Stats<Integer> {
     private int sum = 0;
 

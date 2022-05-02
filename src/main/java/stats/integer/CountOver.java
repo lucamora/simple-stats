@@ -2,6 +2,9 @@ package stats.integer;
 
 import stats.Stats;
 
+/**
+ * Count of the ingested data points that are greater than the given threshold
+ */
 public class CountOver implements Stats<Integer> {
     private int count = 0;
     private final int threshold;

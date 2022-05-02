@@ -1,6 +1,5 @@
 import engines.*;
 import results.Result;
-import sources.ConsoleSource;
 import sources.Source;
 import sources.SourceFactory;
 
@@ -11,6 +10,7 @@ import java.util.List;
 
 public class SimpleStats {
     public static void main(String[] args) throws IOException {
+        // read parameters from console
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("> starting simple stats");

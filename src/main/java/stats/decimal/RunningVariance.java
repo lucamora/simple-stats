@@ -2,6 +2,9 @@ package stats.decimal;
 
 import stats.Stats;
 
+/**
+ * Running variance of all the ingested data points
+ */
 public class RunningVariance implements Stats<Float> {
     private int count = 0;
     private float sum = 0;

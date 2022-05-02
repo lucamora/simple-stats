@@ -15,6 +15,7 @@ public class DecimalEngine extends Engine {
         // use dots instead of commas when formatting float
         Locale.setDefault(Locale.US);
 
+        // register statistics
         this.statistics.add(new RunningAverage());
         this.statistics.add(new RunningVariance());
         this.statistics.add(new Range());
@@ -22,7 +23,7 @@ public class DecimalEngine extends Engine {
 
     @Override
     public boolean ingest(String raw) {
-        // parse ingested string
+        // parse ingested data item
         float number;
         try {
             number = Float.parseFloat(raw);
@@ -31,6 +32,7 @@ public class DecimalEngine extends Engine {
             return false;
         }
 
+        // update statistics
         for (Stats<Float> stats : this.statistics) {
             stats.update(number);
         }

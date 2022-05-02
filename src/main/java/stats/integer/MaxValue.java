@@ -2,6 +2,9 @@ package stats.integer;
 
 import stats.Stats;
 
+/**
+ * Maximum of all the ingested data points
+ */
 public class MaxValue implements Stats<Integer> {
     private int max = 0;
     private boolean first = true;

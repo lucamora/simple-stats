@@ -1,5 +1,8 @@
 package results;
 
+/**
+ * Stats value returned by a statistical engine
+ */
 public class Result {
     private final String name;
     private final String result;

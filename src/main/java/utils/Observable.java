@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Observable class
  * Reference: https://sourcemaking.com/design_patterns/observer
- * @param <T> type of the data sent to the observer from the observable
+ * @param <T> type of the data sent to the observer from the observable instance
  */
 public abstract class Observable<T> {
     private final List<Observer<T>> observers = new ArrayList<>();

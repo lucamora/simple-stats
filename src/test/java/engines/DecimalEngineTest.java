@@ -52,14 +52,14 @@ public class DecimalEngineTest {
 
         // check average before ingestion
         float avgBefore = Float.parseFloat(engine.stats("average").getResult());
-        assertEquals(0, avgBefore, 0.0);
+        assertEquals(0.0, avgBefore, 0.001);
 
         boolean success = engine.ingest(data);
         assertFalse(success);
 
         // check average after ingestion
         float avgAfter = Float.parseFloat(engine.stats("average").getResult());
-        assertEquals(0, avgAfter, 0.0);
+        assertEquals(0.0, avgAfter, 0.001);
     }
 
     @Test
@@ -68,7 +68,7 @@ public class DecimalEngineTest {
 
         // check average before ingestion
         float avgBefore = Float.parseFloat(engine.stats("average").getResult());
-        assertEquals(0, avgBefore, 0.0);
+        assertEquals(0.0, avgBefore, 0.001);
 
         boolean success = engine.ingest(data);
         assertTrue(success);

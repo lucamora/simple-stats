@@ -1,5 +1,9 @@
 package engines;
 
+/**
+ * Creates a new statistical engine defined by the given type
+ * Reference: https://sourcemaking.com/design_patterns/factory_method
+ */
 public class EngineFactory {
     public Engine getEngine(String type) {
         type = type.trim().toLowerCase();

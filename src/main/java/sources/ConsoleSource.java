@@ -3,6 +3,10 @@ package sources;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+/**
+ * Data source that reads input data from console
+ */
 public class ConsoleSource extends Source {
     private BufferedReader reader;
     private boolean stop;
@@ -23,6 +27,7 @@ public class ConsoleSource extends Source {
                 throw new RuntimeException(e);
             }
 
+            // terminate when read string is empty
             if (!data.isEmpty()) {
                 notifyObservers(data);
             }

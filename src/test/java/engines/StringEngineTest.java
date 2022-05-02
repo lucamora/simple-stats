@@ -65,11 +65,12 @@ public class StringEngineTest {
     @Test
     public void export_ShouldReturnStatsList() {
         // add some data
-        engine.ingest("abcdefghi");
+        engine.ingest("abcdefg");
         engine.ingest("a");
         engine.ingest("abc");
         engine.ingest("ab");
         engine.ingest("abc");
+        engine.ingest("aaabbbcccddd");
 
         // export statistics
         List<Result> statistics = engine.export();
@@ -85,7 +86,7 @@ public class StringEngineTest {
         // check longest word
         assertEquals("longest_word", statistics.get(1).getName());
         String longest = statistics.get(1).getResult();
-        assertEquals("abcdefghi", longest);
+        assertEquals("aaabbbcccddd", longest);
 
         // check most frequent word
         assertEquals("most_frequent_word", statistics.get(2).getName());

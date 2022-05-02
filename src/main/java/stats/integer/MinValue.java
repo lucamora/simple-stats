@@ -2,6 +2,9 @@ package stats.integer;
 
 import stats.Stats;
 
+/**
+ * Minimum of all the ingested data points
+ */
 public class MinValue implements Stats<Integer> {
     private int min = 0;
     private boolean first = true;

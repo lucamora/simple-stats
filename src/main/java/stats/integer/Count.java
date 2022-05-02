@@ -2,6 +2,9 @@ package stats.integer;
 
 import stats.Stats;
 
+/**
+ * Count of all the ingested data points
+ */
 public class Count implements Stats<Integer> {
     private int count = 0;
 

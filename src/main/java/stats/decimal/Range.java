@@ -2,6 +2,9 @@ package stats.decimal;
 
 import stats.Stats;
 
+/**
+ * Maximum range of the ingested data points (difference between max and min values)
+ */
 public class Range implements Stats<Float> {
     private float min = 0;
     private float max = 0;

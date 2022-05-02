@@ -11,6 +11,7 @@ public class StringEngine extends Engine {
     private final List<Stats<String>> statistics = new ArrayList<>();
 
     public StringEngine() {
+        // register statistics
         this.statistics.add(new Shortest());
         this.statistics.add(new Longest());
         this.statistics.add(new MostFrequent());
@@ -18,9 +19,10 @@ public class StringEngine extends Engine {
 
     @Override
     public boolean ingest(String raw) {
-        // clean ingested string
+        // clean ingested data item
         String word = raw.toLowerCase();
 
+        // update statistics
         for (Stats<String> stats : this.statistics) {
             stats.update(word);
         }
