@@ -76,7 +76,7 @@ public class StringEngineTest {
         List<Result> statistics = engine.export();
 
         // check array size
-        assertEquals(3, statistics.size());
+        assertEquals(4, statistics.size());
 
         // check shortest word
         assertEquals("shortest_word", statistics.get(0).getName());
@@ -92,5 +92,10 @@ public class StringEngineTest {
         assertEquals("most_frequent_word", statistics.get(2).getName());
         String frequent = statistics.get(2).getResult();
         assertEquals("abc", frequent);
+
+        // check most symbols word
+        assertEquals("most_symbols_word", statistics.get(3).getName());
+        String symbols = statistics.get(3).getResult();
+        assertEquals("abcdefg", symbols);
     }
 }

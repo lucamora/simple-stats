@@ -15,6 +15,7 @@ public class StringEngine extends Engine {
         this.statistics.add(new Shortest());
         this.statistics.add(new Longest());
         this.statistics.add(new MostFrequent());
+        this.statistics.add(new MostSymbols());
     }
 
     @Override
